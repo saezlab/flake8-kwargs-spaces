@@ -18,7 +18,10 @@ class NoSpaceAroundEqualsChecker:
                     yield (
                         node.value.lineno,
                         node.value.col_offset,
-                        "CE101 No space around equals sign for keyword argument",
+                        (
+                            "CE101 No space around equals sign "
+                            "for keyword argument"
+                        ),
                         NoSpaceAroundEqualsChecker,
                     )
 
