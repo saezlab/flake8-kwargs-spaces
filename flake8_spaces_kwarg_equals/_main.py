@@ -4,7 +4,7 @@ __version__ = '0.1.0'
 
 
 class NoSpaceAroundEqualsChecker:
-    name = 'flake8-spaces-kwargs-equals'
+    name = 'flake8-plugin-kwargs-spaces'
     version = __version__
 
     def __init__(self, tree):
@@ -18,7 +18,7 @@ class NoSpaceAroundEqualsChecker:
                     yield (
                         node.value.lineno,
                         node.value.col_offset,
-                        "E999 No space around equals sign for keyword argument",
+                        "CE101 No space around equals sign for keyword argument",
                         NoSpaceAroundEqualsChecker,
                     )
 
