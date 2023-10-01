@@ -3,6 +3,9 @@ name = "flake8-plugin-kwargs-spaces"
 version = "0.1.0"
 description = "Custom flake8 plugin to check spaces around keyword argument equals signs."
 authors = ["Denes Turei <turei.denes@gmail.com>"]
+packages = [
+    { include = "flake8_spaces_kwarg_equals" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
