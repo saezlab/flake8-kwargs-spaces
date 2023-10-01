@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "flake8-plugin-kwargs-spaces"
+version = "0.1.0"
+description = "Custom flake8 plugin to check spaces around keyword argument equals signs."
+authors = ["Denes Turei <turei.denes@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flake8 = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."flake8.extension"]
+"E999" = "flake8_spaces_kwarg_equals.flake8_spaces_kwarg_equals:get_no_space_around_equals_checker"
+
