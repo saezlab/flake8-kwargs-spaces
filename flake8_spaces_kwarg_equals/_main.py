@@ -7,14 +7,22 @@ class NoSpaceAroundEqualsChecker:
     name = 'flake8-plugin-kwargs-spaces'
     version = __version__
 
-    def __init__(self, tree):
+    def __init__(self, tree, filename):
         self.tree = tree
+        self.filename = filename
 
     def run(self):
+        with open(self.filename, 'r', encoding = 'utf-8') as file:
+            source = file.read()
+
         for node in ast.walk(self.tree):
             if isinstance(node, ast.keyword):
-                source = ast.get_source_segment(node)
-                if '=' in source and ' =' not in source and '= ' not in source:
+                segment = ast.get_source_segment(source, node)
+                if (
+                    '=' in segment and
+                    ' =' not in segment and
+                    '= ' not in segment
+                ):
                     yield (
                         node.value.lineno,
                         node.value.col_offset,
@@ -27,4 +35,4 @@ class NoSpaceAroundEqualsChecker:
 
 
 def get_no_space_around_equals_checker(tree, filename):
-    return NoSpaceAroundEqualsChecker(tree)
+    return NoSpaceAroundEqualsChecker(tree, filename = filename)
